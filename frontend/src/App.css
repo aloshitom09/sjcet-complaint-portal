@@ -1,0 +1,185 @@
+:root {
+  /* Light Theme Variables */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  --sidebar-bg: #ffffff;
+}
+
+body.dark-mode {
+  /* Dark Theme Variables */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+  --card-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  --sidebar-bg: #1e293b;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Auth & Landing Pages */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0d47a1 100%);
+    padding: 1rem;
+    transition: background 0.3s;
+}
+
+.auth-card, .landing-card {
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s;
+}
+
+.landing-card {
+    max-width: 650px;
+}
+
+.auth-header { padding: 2rem 2rem 1rem; text-align: center; }
+.auth-body { padding: 2rem; border-top: 1px border var(--border-color); }
+
+.auth-logo { width: 80px; height: auto; margin-bottom: 1rem; }
+
+.form-control-custom {
+    background-color: var(--bg-primary);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+.form-control-custom::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-control-custom:focus {
+    background-color: var(--bg-secondary);
+    border-color: #0d47a1;
+    color: var(--text-primary);
+    box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
+}
+
+.input-group-text.custom-prepend {
+    background-color: var(--bg-primary);
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+}
+
+.btn-primary-custom {
+    background-color: #0d47a1;
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-primary-custom:hover {
+    background-color: #0a367a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(13, 71, 161, 0.2);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+}
+
+.sidebar .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin: 4px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(13, 71, 161, 0.1);
+    color: #0d47a1;
+}
+
+.sidebar.dark-sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #60a5fa;
+}
+
+.sidebar .nav-link.active {
+    background-color: rgba(13, 71, 161, 0.15);
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+.sidebar.dark-sidebar .nav-link.active {
+    background-color: rgba(96, 165, 250, 0.2);
+    color: #93c5fd;
+}
+
+.sidebar-logo { width: 45px; height: auto; }
+
+/* Navbar */
+.top-navbar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    height: 70px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Cards */
+.dynamic-card {
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s, background-color 0.3s, border-color 0.3s;
+}
+
+.dynamic-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Status Colors */
+.status-Pending { background-color: rgba(245, 158, 11, 0.15); color: #d97706; }
+.status-In { background-color: rgba(59, 130, 246, 0.15); color: #2563eb; } /* Covers In Progress */
+.status-Resolved { background-color: rgba(34, 197, 94, 0.15); color: #16a34a; }
+.status-Rejected { background-color: rgba(239, 68, 68, 0.15); color: #dc2626; }
+
+.priority-badge { font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
+.glass-alert { animation: fadeIn 0.3s ease-in-out; }
+
+/* Custom Text utilities */
+.text-dynamic { color: var(--text-primary) !important; }
+.text-dynamic-muted { color: var(--text-secondary) !important; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

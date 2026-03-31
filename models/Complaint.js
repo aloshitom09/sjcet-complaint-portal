@@ -14,7 +14,12 @@ const complaintSchema = new mongoose.Schema({
     ref: "User"
   },
   image_url: String,
-  admin_response: String
+  admin_response: String,
+  priority: {
+    type: String,
+    enum: ["Low", "Medium", "High"],
+    default: "Medium"
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Complaint", complaintSchema);

@@ -14,6 +14,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/complaints", require("./routes/complaintRoutes"));
+app.use("/api/user", require("./routes/userRoutes"));
 
 app.get("/", (req, res) => {
   res.send("API Running...");
