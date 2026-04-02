@@ -3,10 +3,11 @@ const router = express.Router();
 
 const {
   createComplaint,
-  getMyComplaints,
+  getUserComplaints,
   getAllComplaints,
-  updateStatus,
-  deleteComplaint
+  respondToComplaint,
+  deleteComplaint,
+  getStats
 } = require("../controllers/complaintController");
 
 const { protect, adminOnly } = require("../middleware/authMiddleware");
@@ -15,11 +16,15 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 router.post("/", protect, upload.single("image"), createComplaint);
-router.get("/my", protect, getMyComplaints);
+router.get("/user", protect, getUserComplaints);
+router.get("/stats", protect, getStats); // Dynamic stats depending on role
 
-// Admin
+// Admin / Respond
 router.get("/", protect, adminOnly, getAllComplaints);
-router.put("/:id", protect, adminOnly, updateStatus);
+router.put("/:id/status", protect, adminOnly, respondToComplaint);
+router.put("/:id/respond", protect, adminOnly, respondToComplaint);
+router.post("/:id/respond", protect, adminOnly, respondToComplaint);
+router.put("/:id", protect, adminOnly, respondToComplaint);
 router.delete("/:id", protect, adminOnly, deleteComplaint);
 
 module.exports = router;
